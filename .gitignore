@@ -1,0 +1,17 @@
+target
+.idea
+*.iml
+.gradle
+build
+.classpath
+.project
+.settings
+bin
+.DS_Store
+gradle-app.setting
+logs
+generated
+dist
+classes
+db
+out

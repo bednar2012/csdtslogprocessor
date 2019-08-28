@@ -1,0 +1,40 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.9.3'
+    runtimeOnly 'org.hsqldb:hsqldb'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.liquibase:liquibase-core'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jar {
+    enabled = true
+}
+
+springBoot {
+    mainClassName = 'com.test.logprocessor.LogProcessorApplication'
+}
+
+tasks.register("clearDatabase") {
+    group = 'Application'
+    description = 'Clears database'
+    doFirst {
+        delete "db"
+    }
+}
